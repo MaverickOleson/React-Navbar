@@ -6,6 +6,7 @@ import {SiLinkedin} from 'react-icons/si';
 
 function App() {
   const [nav, setNav] = useState(false);
+  const [menu, setMenu] = useState(null);
   const [size, setSize] = useState(window.innerWidth);
   const checkSize = () => {
     setSize(window.innerWidth);
@@ -19,7 +20,7 @@ function App() {
   return (
     <nav className=''>
       <h3 className='title'>Random Business</h3>
-      <HiMenu className='menu' onClick={()=>setNav(!nav)} style={(nav) ? {animation: 'openMenu 0.5s linear forwards'} : {animation: 'closeMenu 0.5s linear forwards'}}/>
+      <HiMenu className='menu' onClick={()=>{setTimeout(()=>{setNav(!nav)}, 300); setMenu(!menu)}} style={(menu) ? {animation: 'openMenu 0.3s ease-out forwards'} : (menu !== null) ? {animation: 'closeMenu 0.3s ease-out forwards'} : null}/>
       <div style={(nav || size > 983) ? {display: 'flex'} : {display: 'none'}}>
         <p></p>
         <p>About</p>
