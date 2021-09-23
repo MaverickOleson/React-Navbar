@@ -1,3 +1,6 @@
+html{
+    overflow-y: auto;
+}
 nav {
     width: 100%;
     height: auto;
@@ -12,8 +15,18 @@ nav {
         margin-bottom: 0;
     }
     .title {
+        font-size: 28px;
         text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
-        margin-bottom: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+    .menu{
+        font-size: 40px;
+        visibility: hidden;
+        position: absolute;
+        top: 18.5px;
+        right: 19px;
     }
     div {
         width: auto;
@@ -22,13 +35,15 @@ nav {
         flex-direction: row;
         &:nth-of-type(2) {
             * {
-                font-size: 20px;
+                font-size: 24px;
                 margin-right: 53px;
             }
         }
         p {
-            margin-right: 17px;
-            margin-left: 17px;
+            font-size: 22px;
+            position: relative;
+            margin-right: 1.5vw;
+            margin-left: 1.5vw;
             &::before {
                 content: '';
                 position: absolute;
@@ -36,12 +51,50 @@ nav {
                 height: 2px;
                 bottom: 0;
                 left: 0;
-                background-color: #fff;
+                background-color: purple;
                 visibility: hidden;
-                transition: all 0.3s ease-in-out;
+                transition: all 0.3s linear;
+            }
+            &:hover{
+                &:hover{
+                    cursor: pointer;
+                }
+                &::before{
+                    visibility: visible;
+                    width: 100%;
+                    background-color: fuchsia;
+                }
             }
         }
     }
-    @media screen and (max-width: 942.4px) {
+    @media screen and (max-width: 983px) {
+        flex-direction: column;
+        align-items: flex-start;
+        .title{
+            margin-left: 20px;
+        }
+        .menu{
+            visibility: visible;
+            &:hover{
+                cursor: pointer;
+                user-select: none;
+            }
+        }
+        div{
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            *{
+                margin-top: 20px;
+                margin-left: 20px !important;
+            }
+            &:nth-of-type(2) {
+                * {
+                    font-size: 30px;
+                    margin: auto !important;
+                    margin-top: 20px !important;
+                }
+            }
+        }
     }
 }

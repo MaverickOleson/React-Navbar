@@ -351,6 +351,10 @@ h4 {
   text-align: center;
 }
 
+html {
+  overflow-y: auto;
+}
+
 nav {
   width: 100%;
   height: auto;
@@ -366,8 +370,18 @@ nav * {
   margin-bottom: 0;
 }
 nav .title {
+  font-size: 28px;
   text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5);
-  margin-bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+nav .menu {
+  font-size: 40px;
+  visibility: hidden;
+  position: absolute;
+  top: 18.5px;
+  right: 19px;
 }
 nav div {
   width: auto;
@@ -376,12 +390,14 @@ nav div {
   flex-direction: row;
 }
 nav div:nth-of-type(2) * {
-  font-size: 20px;
+  font-size: 24px;
   margin-right: 53px;
 }
 nav div p {
-  margin-right: 17px;
-  margin-left: 17px;
+  font-size: 22px;
+  position: relative;
+  margin-right: 1.5vw;
+  margin-left: 1.5vw;
 }
 nav div p::before {
   content: "";
@@ -390,9 +406,47 @@ nav div p::before {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #fff;
+  background-color: purple;
   visibility: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s linear;
+}
+nav div p:hover:hover {
+  cursor: pointer;
+}
+nav div p:hover::before {
+  visibility: visible;
+  width: 100%;
+  background-color: fuchsia;
+}
+@media screen and (max-width: 983px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav .title {
+    margin-left: 20px;
+  }
+  nav .menu {
+    visibility: visible;
+  }
+  nav .menu:hover {
+    cursor: pointer;
+    user-select: none;
+  }
+  nav div {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+  nav div * {
+    margin-top: 20px;
+    margin-left: 20px !important;
+  }
+  nav div:nth-of-type(2) * {
+    font-size: 30px;
+    margin: auto !important;
+    margin-top: 20px !important;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
