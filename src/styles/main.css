@@ -383,6 +383,26 @@ nav .menu {
   top: 18.5px;
   right: 19px;
 }
+@keyframes openMenu {
+  0% {
+    transform: rotateZ(0deg);
+    color: black;
+  }
+  100% {
+    transform: rotateZ(-90deg);
+    color: fuchsia;
+  }
+}
+@keyframes closeMenu {
+  0% {
+    transform: rotateZ(-90deg);
+    color: fuchsia;
+  }
+  100% {
+    transform: rotateZ(0deg);
+    color: black;
+  }
+}
 nav div {
   width: auto;
   height: auto;
@@ -392,6 +412,9 @@ nav div {
 nav div:nth-of-type(2) * {
   font-size: 24px;
   margin-right: 53px;
+}
+nav div:hover {
+  cursor: pointer;
 }
 nav div p {
   font-size: 22px;
@@ -409,9 +432,6 @@ nav div p::before {
   background-color: purple;
   visibility: hidden;
   transition: all 0.3s linear;
-}
-nav div p:hover:hover {
-  cursor: pointer;
 }
 nav div p:hover::before {
   visibility: visible;
@@ -433,6 +453,9 @@ nav div p:hover::before {
     cursor: pointer;
     user-select: none;
   }
+  nav .menu:checked {
+    color: blue;
+  }
   nav div {
     display: none;
     width: 100%;
@@ -446,6 +469,11 @@ nav div p:hover::before {
     font-size: 30px;
     margin: auto !important;
     margin-top: 20px !important;
+  }
+}
+@media screen and (max-width: 333px) {
+  nav .title {
+    width: 0;
   }
 }
 

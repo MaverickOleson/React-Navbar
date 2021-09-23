@@ -1,4 +1,4 @@
-html{
+html {
     overflow-y: auto;
 }
 nav {
@@ -21,12 +21,32 @@ nav {
         margin-bottom: 10px;
         margin-left: 20px;
     }
-    .menu{
+    .menu {
         font-size: 40px;
         visibility: hidden;
         position: absolute;
         top: 18.5px;
         right: 19px;
+        @keyframes openMenu {
+            0% {
+                transform: rotateZ(0deg);
+                color: black;
+            }
+            100% {
+                transform: rotateZ(-90deg);
+                color: fuchsia;
+            }
+        }
+        @keyframes closeMenu {
+            0% {
+                transform: rotateZ(-90deg);
+                color: fuchsia;
+            }
+            100% {
+                transform: rotateZ(0deg);
+                color: black;
+            }
+        }
     }
     div {
         width: auto;
@@ -38,6 +58,9 @@ nav {
                 font-size: 24px;
                 margin-right: 53px;
             }
+        }
+        &:hover {
+            cursor: pointer;
         }
         p {
             font-size: 22px;
@@ -55,11 +78,8 @@ nav {
                 visibility: hidden;
                 transition: all 0.3s linear;
             }
-            &:hover{
-                &:hover{
-                    cursor: pointer;
-                }
-                &::before{
+            &:hover {
+                &::before {
                     visibility: visible;
                     width: 100%;
                     background-color: fuchsia;
@@ -70,21 +90,24 @@ nav {
     @media screen and (max-width: 983px) {
         flex-direction: column;
         align-items: flex-start;
-        .title{
+        .title {
             margin-left: 20px;
         }
-        .menu{
+        .menu {
             visibility: visible;
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 user-select: none;
             }
+            &:checked {
+                color: blue;
+            }
         }
-        div{
+        div {
             display: none;
             width: 100%;
             flex-direction: column;
-            *{
+            * {
                 margin-top: 20px;
                 margin-left: 20px !important;
             }
@@ -95,6 +118,11 @@ nav {
                     margin-top: 20px !important;
                 }
             }
+        }
+    }
+    @media screen and (max-width: 333px) {
+        .title {
+            width: 0;
         }
     }
 }

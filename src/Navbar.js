@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles/main.css';
 import {HiMenu} from 'react-icons/hi';
 import {FaFacebook, FaTwitter, FaBehance} from 'react-icons/fa';
@@ -6,17 +6,27 @@ import {SiLinkedin} from 'react-icons/si';
 
 function App() {
   const [nav, setNav] = useState(false);
+  const [size, setSize] = useState(window.innerWidth);
+  const checkSize = () => {
+    setSize(window.innerWidth);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', checkSize);
+    return () => {
+      window.removeEventListener('resize', checkSize);
+    };
+  }, []);
   return (
     <nav className=''>
       <h3 className='title'>Random Business</h3>
-      <HiMenu className='menu' onClick={()=>setNav(!nav)}/>
-      <div style={(nav) ? {display: 'flex'} : {display: 'none'}}>
-        <p>Home</p>
+      <HiMenu className='menu' onClick={()=>setNav(!nav)} style={(nav) ? {animation: 'openMenu 0.5s linear forwards'} : {animation: 'closeMenu 0.5s linear forwards'}}/>
+      <div style={(nav || size > 983) ? {display: 'flex'} : {display: 'none'}}>
+        <p></p>
         <p>About</p>
         <p>Products</p>
         <p>Cart</p>
       </div>
-      <div style={(nav) ? {display: 'flex'} : {display: 'none'}}>
+      <div style={(nav || size > 983) ? {display: 'flex'} : {display: 'none'}}>
         <FaFacebook/>
         <FaTwitter/>
         <SiLinkedin/>
